@@ -33,8 +33,15 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
+build/dist/
+build/dist-dev/
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*ß
+node_modules/`
 jspm_packages/
+src/config
 
 # TypeScript v1 declaration files
 typings/
