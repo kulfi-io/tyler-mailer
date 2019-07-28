@@ -1,0 +1,17 @@
+extends ../shared/layout.pug
+
+block content
+    div.content
+      center
+        div.salutation 
+          p Dear #{name},
+        div.content-item 
+          p You have selected #{email} as your new identifier. To verify this email address belongs to you, click the link below and then sign in using your identifier and password.
+        div.content-item
+          a(href=`http://127.0.0.1:3003/login/${token}`): button(type="button" class='btn') Verify
+        div.content-item 
+          p(style='font-weight: bold;') Why you received this email?
+          p We require verification whenever an email address is selected as an identifier. Your identifier cannot be used to access our site until you verify it.
+          p If you didn't make these changes or you believe an unauthorized person has accessed your account, you should change your password as soon as possible from your Tyler CMT account page at https://tyler.kulfi.io.
+        div.content-item(class='validiction')
+          p Tyler CMT support

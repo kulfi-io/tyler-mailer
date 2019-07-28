@@ -1,0 +1,113 @@
+html, body {
+    background: white;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+.primary {
+    margin: 0 auto;
+    width: 80%;
+}
+.header {
+    color: #a9a9a9;
+    width: 100vw;
+    height: 100vh;
+    padding: 2;
+
+}
+
+.header .head-container {
+    color: black;
+    font-family: Helvetica;
+    padding: 1%;
+}
+
+.header .company {
+    font-size: 28px;
+    width: 100vw;
+}
+
+.header .objective {
+    padding-top: 1%;
+    font-size: 14px;
+    width: 100vw;
+}
+
+.header .title {
+    padding-top: 20px;
+    font-size: 15px;
+    width: 100vw;
+}
+
+.content {
+    height: 600px;
+    width: 100vw;
+    padding: 2%;
+    font-family: Helvetica;
+    color: #000000;
+}
+
+.content .salutation {
+    font-size:  13px;
+    text-align: left;
+}
+
+.content .content-item {
+    font-size:  13px;
+    line-height: 1.4;
+    text-align: left;
+
+}
+
+.content .validiction {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.content .content-item .btn{
+    padding: 2%;
+    border-radius: 0;
+    color: #a9a9a9;
+    font-size: 16px;
+    border: none;
+    width: 33vw;
+    cursor: pointer;
+}
+
+.content .content-item .btn:hover{
+    background: #dddddd;
+}
+
+.footer {
+    width: 100vw;
+}
+
+.footer .foot-container {
+    color: #a9a9a9;
+    font-family: Helvetica;
+    padding: 2%;
+}
+
+.footer .company-info {
+    font-size: 12px;
+    width: 100vw;
+}
+
+.footer .contact {
+    font-size: 1px;
+    font-size: 11px;
+    padding-top: 1%;
+    width:100vw;
+}
+
+.footer .need-help {
+    font-size: 11px;
+    padding-top: 1%;
+    padding-right: 2px;
+    font-weight: bold;
+}
+
+
+
