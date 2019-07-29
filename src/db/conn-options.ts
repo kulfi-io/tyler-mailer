@@ -1,6 +1,7 @@
 import { ConnectionOptions } from "mongoose";
 
-export default class ConnOptions implements ConnectionOptions {
+export class ConnOptions implements ConnectionOptions {
+    
     useNewUrlParser: boolean = true;
     useCreateIndex: boolean = true;
     useFindAndModify: boolean = false;
@@ -17,3 +18,5 @@ export default class ConnOptions implements ConnectionOptions {
     pass: string = '';
     dbName: string = '';
 }
+
+export default new ConnOptions();

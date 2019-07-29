@@ -9,7 +9,7 @@ export class BaseController {
     protected transporter: typeof Mail;
     protected mail: IMail;
     protected transportSecret: string;
-    
+
     constructor() {
         this.mail = config.mail;
         this.transportSecret = config.transportSecret;

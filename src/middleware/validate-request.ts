@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
 import * as config from '../config/config.json';
 import { IDecoded, IApiUser } from '../models/interfaces';
-import Schema from '../models/valid-client-schema';
+import {AccountDB} from '../controllers/account-db-controller'
 import { VERIFY } from './verify-enums';
 
 export class ValidateRequest {
@@ -32,7 +32,7 @@ export class ValidateRequest {
     if(address !== _decoded.address)
       return res.status(400).send({message: VERIFY.UNAUTHORIZED_ADDRESS});
 
-    Schema.findById(_decoded.id, (err: Error, data: IApiUser) => {
+    AccountDB.Models.ValidClient.findById(_decoded.id, (err: Error, data: IApiUser) => {
         
       if(err) return res.status(400).send(err.message);
 

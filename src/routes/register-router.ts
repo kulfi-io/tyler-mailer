@@ -2,7 +2,7 @@ import { BaseRoute } from './base-router';
 import { Router} from 'express';
 import register from '../controllers/register-controller';
 
-export class Route extends BaseRoute {
+export class RegisterRouter extends BaseRoute {
    
     constructor() {
         super();
@@ -12,3 +12,5 @@ export class Route extends BaseRoute {
         router.post('/v1/register', register.send);
     }
 }
+
+export default new RegisterRouter();

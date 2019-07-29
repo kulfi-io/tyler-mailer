@@ -3,7 +3,7 @@ import * as cors from 'cors';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
-import { Route } from './routes';
+import { RegisterRouter } from './routes/register-router';
 import { ValidateRequest } from './middleware/validate-request';
 
 export class App {
@@ -33,8 +33,7 @@ export class App {
   private routes() {
     
     const router = express.Router();
-    Route.map(router);
-
+    RegisterRouter.map(router);
     this.server.use(router);
     
   }

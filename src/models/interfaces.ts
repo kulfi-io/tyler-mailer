@@ -1,12 +1,5 @@
 import * as mongoose from "mongoose";
 
-export interface IVerify extends mongoose.Document {
-    userid: string;
-    username: string;
-    email: string;
-    result: string;
-}
-
 export interface IDecoded {
     id: string;
     fdnq: string;
@@ -39,14 +32,3 @@ export interface IApiUser extends mongoose.Document {
     validationToken: string;
 }
 
-export interface IValidClient extends mongoose.Document {
-    id: string;
-    ipAddress: string;
-    name: string;
-    description: string;
-    contactName: string;
-    email: string;
-    phoneNumber: number;
-    token: string;
-    active: boolean;
-}
