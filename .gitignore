@@ -42,7 +42,6 @@ yarn-error.log*
 node_modules/
 jspm_packages/
 src/config
-dist/
 ts-dist/
 
 # TypeScript v1 declaration files

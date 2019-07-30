@@ -14,7 +14,7 @@ export interface IMail {
     user: string; 
     pass: string; 
     preview: boolean; 
-    send: boolean; 
+    send: boolean;
     templates: string[]; 
 }
 

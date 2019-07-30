@@ -13,7 +13,6 @@ export class MailerDB {
     private options: ConnectionOptions;
     private endpoint: string;
 
-
     private _db: Connection;
     private _models: IModels;
 

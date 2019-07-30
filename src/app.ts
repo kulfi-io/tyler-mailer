@@ -5,6 +5,7 @@ import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
 import { RegisterRouter } from './routes/register-router';
 import { ValidateRequest } from './middleware/validate-request';
+import * as path from 'path';
 
 export class App {
   private server: express.Application;
@@ -24,9 +25,10 @@ export class App {
     this.server.use(bodyParser.urlencoded({ extended: false }));
     this.server.use(bodyParser.json()); 
     this.server.use(helmet());
+    this.server.use(express.static(path.join(__dirname, 'public')));
     this.server.disable('x-powered-by');
     this.server.all('/*', cors());
-    this.server.all('/v1/*', ValidateRequest.validate);
+    // this.server.all('/v1/*', ValidateRequest.validate);
 
   }
 
