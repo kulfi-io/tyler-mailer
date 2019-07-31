@@ -40,8 +40,6 @@ export class NoteController extends BaseController {
             }
         })
         .then((result: Result) => {
-            // this.verify.result = result.messageId;
-            // this.insertSentEmailResponse(this.verify);
             res.status(200).send({ message: 'sent' });
         })
         .catch((err: Error) => {
