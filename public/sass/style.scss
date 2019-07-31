@@ -1,26 +1,30 @@
 html, body {
     background: white;
-    min-height: 100vh;
-    min-width: 100vw;
-    margin: 0;
-    padding: 0;
+    // min-height: 100vh;
+    // min-width: 100vw;
+    margin: auto;
+    display: block;
+    font-family: Montserrat, sans-serif;
+    line-height: 1.5;
 }
 
 .primary {
-    margin: 0 auto;
-    width: 80%;
+    margin: auto;
+    display: block;
+    min-width: 80%;
 }
 .header {
     color: #a9a9a9;
-    width: 100vw;
-    height: 100vh;
+    margin: auto;
+    display: block;
+    // width: 100vw;
+    // height: 100vh;
     padding: 2;
 
 }
 
 .header .head-container {
     color: black;
-    font-family: Helvetica;
     padding: 1%;
 }
 
@@ -42,11 +46,11 @@ html, body {
 }
 
 .content {
-    height: 600px;
-    width: 100vw;
-    padding: 2%;
-    font-family: Helvetica;
-    color: #000000;
+    margin: auto;
+    display: block;
+    color: #515769;
+    line-height: 2;
+    max-width: 90vw;
 }
 
 .content .salutation {
@@ -67,13 +71,14 @@ html, body {
 }
 
 .content .content-item .btn{
-    padding: 2%;
     border-radius: 0;
     color: #a9a9a9;
+    min-height: 5vh;
     font-size: 16px;
     border: none;
-    width: 33vw;
+    min-width: 15vw;
     cursor: pointer;
+    
 }
 
 .content .content-item .btn:hover{
@@ -81,13 +86,16 @@ html, body {
 }
 
 .footer {
-    width: 100vw;
+    //width: 100vw;
+    margin: auto;
+    display: block;
+    line-height: 1.5;
 }
 
 .footer .foot-container {
+    margin: auto;
+    display: block;
     color: #a9a9a9;
-    font-family: Helvetica;
-    padding: 2%;
 }
 
 .footer .company-info {

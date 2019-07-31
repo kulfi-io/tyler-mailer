@@ -18,7 +18,8 @@
       ]
     },
     "include": [
-        "./src/**/*"
+        "./src/**/*", 
+        "emails"
     ],
     "exclude": [
       "/node_modules"

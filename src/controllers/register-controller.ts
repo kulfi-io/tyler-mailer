@@ -1,12 +1,7 @@
 import { BaseController } from './base-controller';
 import { Request, Response } from "express";
-import * as Email from 'email-templates';
 import Result from '../models/result';
 import Verify from '../models/verify';
-import { MailerDB } from '../controllers/mailer-db-controller';
-import * as path from 'path';
-
-
 
 export class RegisterController extends BaseController {
     private verify: Verify = {}
@@ -33,20 +28,18 @@ export class RegisterController extends BaseController {
         this.verify.token = req.body.token;
         this.verify.username = req.body.username;
         this.verify.userId = req.body.userId;
-
-        const root = path.resolve(this.mail.root);
         
-        const _email= new Email({
-            views: {root},
-            message: {
-                from: this.mail.sender
-            },
-            preview: this.mail.preview,
-            transport: this.transporter,
+        // const _email= new Email({
+        //     message: {
+        //         from: this.mail.sender
+        //     },
+        //     preview: this.mail.preview,
+        //     transport: this.transporter,
+        //     send: this.mail.send,
            
-        });
+        // });
 
-        _email.send({
+        this.Email.send({
             template: 'register',
             message: {
                 to: 'ashish@ashishc.io'
@@ -59,7 +52,7 @@ export class RegisterController extends BaseController {
         })
         .then((result: Result) => {
             this.verify.result = result.messageId;
-            // this.insertSentEmailResponse();
+            this.insertSentEmailResponse(this.verify);
             res.status(200).send({ message: 'sent' });
         })
         .catch((err: Error) => {
@@ -67,22 +60,7 @@ export class RegisterController extends BaseController {
         });
 
     }
-
-    private insertSentEmailResponse = () => {
-
-        let _model = new MailerDB.Models.Verify(
-            {
-                userid: this.verify.userId,
-                username: this.verify.username,
-                email: this.verify.email,
-                result: this.verify.result,
-            }
-        );
-
-        MailerDB.Models.Verify.create(_model, (err: Error, data: Verify) => {
-            if (err) console.error({message: err.message});
-        });
-    }
+    
 }
 
 export default new RegisterController();

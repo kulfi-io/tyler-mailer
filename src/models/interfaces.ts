@@ -15,7 +15,6 @@ export interface IMail {
     pass: string; 
     preview: boolean; 
     send: boolean;
-    templates: string[]; 
 }
 
 export interface IApiUser extends mongoose.Document {
