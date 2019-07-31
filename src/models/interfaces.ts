@@ -9,12 +9,24 @@ export interface IDecoded {
 }
 
 export interface IMail {
+
     service: string; 
     sender: string; 
     user: string; 
     pass: string; 
     preview: boolean; 
     send: boolean;
+    
+}
+
+export interface INote {
+    
+    sender: string;
+    firstname: string;
+    lastname: string;
+    content: string;
+    fullname():string;
+
 }
 
 export interface IApiUser extends mongoose.Document {
