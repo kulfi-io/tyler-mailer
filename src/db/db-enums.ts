@@ -6,3 +6,9 @@ export enum CONN {
     RECONNECTED = "Connection reconnected",
     CLOSED = "Connection closed",
 }
+
+export enum ENV {
+    DEV = "development",
+    PROD = "production"
+}
+

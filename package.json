@@ -4,7 +4,8 @@
   "description": "responsible for mailing tyler cmt communication",
   "main": "index.ts",
   "scripts": {
-    "build": "webpack  --progress --config build/webpack.dev.config.js",
+    "build-dev": "webpack  --progress --config build/webpack.dev.config.js",
+    "build": "webpack  --progress --config build/webpack.prod.config.js",
     "start": "node build/dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

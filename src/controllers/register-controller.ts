@@ -19,30 +19,18 @@ export class RegisterController extends BaseController {
             return res.status(400).send({ message: "missing data item(s)" });
         }
 
-        // this.verify.email = this.decryptData(req.body.email);
-        // this.verify.token = req.body.token;
-        // this.verify.username = this.decryptData(req.body.username);
-        // this.verify.userId = req.body.userId;
-
-        this.verify.email = req.body.email;
+        this.verify.email = this.decryptData(req.body.email);
         this.verify.token = req.body.token;
-        this.verify.username = req.body.username;
-        this.verify.userId = req.body.userId;
-        
-        // const _email= new Email({
-        //     message: {
-        //         from: this.mail.sender
-        //     },
-        //     preview: this.mail.preview,
-        //     transport: this.transporter,
-        //     send: this.mail.send,
-           
-        // });
+        this.verify.username = this.decryptData(req.body.username);
+        this.verify.userId = this.decryptData(req.body.userId);
+
 
         this.Email.send({
             template: 'register',
             message: {
-                to: 'ashish@ashishc.io'
+                to: this.mail.overrideProd
+                    ? this.mail.passiveSender 
+                    : this.mail.sender
             },
             locals: {
                 name: this.verify.username,
@@ -58,9 +46,7 @@ export class RegisterController extends BaseController {
         .catch((err: Error) => {
             res.status(400).send({ message: err.message });
         });
-
     }
-    
 }
 
 export default new RegisterController();

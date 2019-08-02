@@ -42,6 +42,7 @@ export class App {
   public run(port: number, host: string) {
     this.server.listen(port, host, () => {
       console.log(`listening on port: ${port}`);
+      console.log(`ENV: ${process.env.NODE_ENV}`);
     });
   }
 

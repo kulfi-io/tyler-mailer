@@ -9,14 +9,15 @@ export interface IDecoded {
 }
 
 export interface IMail {
-
     service: string; 
     sender: string; 
     user: string; 
     pass: string; 
     preview: boolean; 
     send: boolean;
-    
+    passiveSender: string;
+    overrideProd: boolean;
+    region: string;
 }
 
 export interface INote {

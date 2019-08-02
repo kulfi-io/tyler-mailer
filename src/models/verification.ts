@@ -1,7 +1,7 @@
 import {Schema, model, Document, Model } from 'mongoose';
 
 declare interface IVerify extends Document {
-    userid: string;
+    userId: string;
     username: string;
     email: string;
     result: string;
