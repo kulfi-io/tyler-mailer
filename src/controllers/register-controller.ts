@@ -24,13 +24,12 @@ export class RegisterController extends BaseController {
         this.verify.username = this.decryptData(req.body.username);
         this.verify.userId = this.decryptData(req.body.userId);
 
-
         this.Email.send({
             template: 'register',
             message: {
-                to: this.mail.overrideProd
-                    ? this.mail.passiveSender 
-                    : this.mail.sender
+                to: this.mail.overrideEmail
+                    ? this.mail.passiveTarget
+                    : this.verify.email
             },
             locals: {
                 name: this.verify.username,

@@ -2,13 +2,13 @@ import { INote } from "./interfaces";
 
 export default class Note implements INote {
 
-    sender: string;    
+    email: string;    
     firstname: string;
     lastname: string;
     content: string;
 
-    constructor(sender: string, firstname: string, lastname: string, content: string) {
-        this.sender = sender;
+    constructor(email: string, firstname: string, lastname: string, content: string) {
+        this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
         this.content = content;

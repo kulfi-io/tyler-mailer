@@ -4,6 +4,7 @@ import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import * as helmet from 'helmet';
 import MailerRouter from './routes';
+import * as config from './config/config.json';
 import { ValidateRequest } from './middleware/validate-request';
 
 export class App {
@@ -15,7 +16,7 @@ export class App {
     this.server = express();
     this.configureMiddleware();
     this.routes();
-
+    this.run(config.port, config.host);
   }
 
   private configureMiddleware() {

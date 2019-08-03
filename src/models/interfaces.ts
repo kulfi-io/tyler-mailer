@@ -15,14 +15,14 @@ export interface IMail {
     pass: string; 
     preview: boolean; 
     send: boolean;
-    passiveSender: string;
-    overrideProd: boolean;
+    passiveTarget: string;
+    overrideEmail: boolean;
     region: string;
 }
 
 export interface INote {
     
-    sender: string;
+    email: string;
     firstname: string;
     lastname: string;
     content: string;

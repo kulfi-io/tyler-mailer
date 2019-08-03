@@ -11,7 +11,7 @@ export class NoteController extends BaseController {
 
     send = (req: Request, res: Response) => {
         if (
-            !req.body.sender ||
+            !req.body.email ||
             !req.body.firstname ||
             !req.body.lastname ||
             !req.body.content
@@ -20,18 +20,22 @@ export class NoteController extends BaseController {
         }
 
         this.note = new Note(
-            req.body.sender
-            , req.body.firstname
-            , req.body.lastname
-            , req.body.content
+            this.decryptData(req.body.email)
+            , this.decryptData(req.body.firstname)
+            , this.decryptData(req.body.lastname)
+            , this.decryptData(req.body.content)
         );
         
 
         this.Email.send({
             template: 'note',
             message: {
-                from: 'ashish@ashishc.io',
-                to: 'ashish@ashishc.io; kulfiapp@gmail.com'
+                from: this.mail.overrideEmail
+                    ? this.mail.passiveTarget
+                    : this.note.email,
+                to: this.mail.overrideEmail
+                    ? `${this.mail.sender}; ${this.mail.passiveTarget}`
+                    : `${this.mail.sender}; ${this.note.email}`
             },
             locals: {
                 fullname: this.note.fullname(),
