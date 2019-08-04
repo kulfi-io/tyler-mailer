@@ -7,11 +7,11 @@ export default class Note implements INote {
     lastname: string;
     content: string;
 
-    constructor(email: string, firstname: string, lastname: string, content: string) {
-        this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.content = content;
+    constructor() {
+        this.email = '';
+        this.firstname = '';
+        this.lastname = '';
+        this.content = '';
     }
 
     fullname(): string {

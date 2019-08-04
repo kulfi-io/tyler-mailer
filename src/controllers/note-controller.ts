@@ -4,9 +4,10 @@ import Result from '../models/result';
 import Note from '../models/note';
 
 export class NoteController extends BaseController {
-    private note?: Note 
+    private note: Note 
     constructor() {
         super();
+        this.note = new Note();
     }
 
     send = (req: Request, res: Response) => {
@@ -19,14 +20,11 @@ export class NoteController extends BaseController {
             return res.status(400).send({ message: "missing data item(s)" });
         }
 
-        this.note = new Note(
-            this.decryptData(req.body.email)
-            , this.decryptData(req.body.firstname)
-            , this.decryptData(req.body.lastname)
-            , this.decryptData(req.body.content)
-        );
+        this.note.email = this.decryptData(req.body.email);
+        this.note.firstname = this.decryptData(req.body.firstname);
+        this.note.lastname = this.decryptData(req.body.lastname);
+        this.note.content  = this.decryptData(req.body.content);
         
-
         this.Email.send({
             template: 'note',
             message: {
@@ -44,7 +42,7 @@ export class NoteController extends BaseController {
             }
         })
         .then((result: Result) => {
-            res.status(200).send({ message: 'sent' });
+            res.status(200).send({ message: `Note sent` });
         })
         .catch((err: Error) => {
             res.status(400).send({ message: err.message });
