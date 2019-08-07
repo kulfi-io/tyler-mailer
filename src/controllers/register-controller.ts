@@ -19,10 +19,10 @@ export class RegisterController extends BaseController {
             return res.status(400).send({ message: "missing data item(s)" });
         }
 
-        this.verify.email = this.decryptData(req.body.email);
+        this.verify.email = this.decryptIV(req.body.email);
         this.verify.token = req.body.token;
-        this.verify.username = this.decryptData(req.body.username);
-        this.verify.userId = this.decryptData(req.body.userId);
+        this.verify.username = this.decryptIV(req.body.username);
+        this.verify.userId = this.decryptIV(req.body.userId);
 
         this.Email.send({
             template: 'register',
