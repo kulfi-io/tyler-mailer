@@ -1,0 +1,17 @@
+extends ../shared/layout.pug
+
+block content
+    div.content
+      center
+        div.salutation 
+          p Hello #{name},
+        div.content-item 
+          p You recently requested to reset you password. Please clik the reset button to update you password.
+        div.content-item
+          a(href=`http://127.0.0.1:3003/validate/password-reset/${token}`): button(type="button" class='btn') Verify
+        div.content-item 
+          p(style='font-weight: bold;') Why you received this email?
+          p We require verification whenever an password reset is requested.
+          p If you didn't make these changes or you believe an unauthorized person has accessed your account, you should change your password as soon as possible from your Tyler CMT account page at https://tyler.kulfi.io.
+        div.content-item(class='validiction')
+          p Tyler CMT support

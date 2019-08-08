@@ -12,3 +12,7 @@ export enum ENV {
     PROD = "production"
 }
 
+export enum MAILER {
+    MISSING_REQUIRED_ITEMS = "Missing required items",
+    REQUEST_SENT = "Request sent"
+}

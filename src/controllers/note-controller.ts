@@ -10,7 +10,7 @@ export class NoteController extends BaseController {
         this.note = new Note();
     }
 
-    send = (req: Request, res: Response) => {
+    sendNote = (req: Request, res: Response) => {
         if (
             !req.body.email ||
             !req.body.firstname ||

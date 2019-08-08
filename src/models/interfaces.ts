@@ -27,8 +27,8 @@ export interface INote {
     lastname: string;
     content: string;
     fullname():string;
-
 }
+
 
 export interface IApiUser extends mongoose.Document {
     id: string;
@@ -42,5 +42,13 @@ export interface IApiUser extends mongoose.Document {
     active: boolean;
     tokenValidated: boolean;
     validationToken: string;
+}
+
+export interface IResetRequest {
+    username: string,
+    firstname: string,
+    lastname: string,
+    email: string;
+    token: string;
 }
 

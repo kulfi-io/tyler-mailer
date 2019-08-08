@@ -3,13 +3,13 @@ import { Request, Response } from "express";
 import Result from '../models/result';
 import Verify from '../models/verify';
 
-export class RegisterController extends BaseController {
+export class UserController extends BaseController {
     private verify: Verify = {}
     constructor() {
         super();
     }
 
-    send = (req: Request, res: Response) => {
+    registerAccount = (req: Request, res: Response) => {
         if (
             !req.body.userId ||
             !req.body.username ||
@@ -48,5 +48,5 @@ export class RegisterController extends BaseController {
     }
 }
 
-export default new RegisterController();
+export default new UserController();
 

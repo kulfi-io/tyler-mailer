@@ -1,7 +1,8 @@
 import { BaseRoute } from './base-router';
 import { Router} from 'express';
-import register from '../controllers/register-controller';
+import user from '../controllers/user-controller';
 import note from '../controllers/note-controller';
+import login from '../controllers/login-controller';
 
 export class MailerRouter extends BaseRoute {
    
@@ -10,8 +11,9 @@ export class MailerRouter extends BaseRoute {
     }
 
     public map(router: Router) {
-        router.post('/v1/register', register.send);
-        router.post('/v1/note',  note.send);
+        router.post('/v1/register', user.registerAccount);
+        router.post('/v1/note',  note.sendNote);
+        router.post('/v1/reset-request', login.resetRequest)
     }
 }
 
