@@ -1,8 +1,8 @@
-import { BaseRoute } from './base-router';
-import { Router} from 'express';
-import user from '../controllers/user-controller';
-import note from '../controllers/note-controller';
 import login from '../controllers/login-controller';
+import note from '../controllers/note-controller';
+import user from '../controllers/user-controller';
+import { BaseRoute } from './base-router';
+import { Router } from 'express';
 
 export class MailerRouter extends BaseRoute {
    

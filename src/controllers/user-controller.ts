@@ -1,7 +1,7 @@
-import { BaseController } from './base-controller';
-import { Request, Response } from "express";
 import Result from '../models/result';
 import Verify from '../models/verify';
+import { BaseController } from './base-controller';
+import { Request, Response } from 'express';
 
 export class UserController extends BaseController {
     private verify: Verify = {}
@@ -19,10 +19,10 @@ export class UserController extends BaseController {
             return res.status(400).send({ message: "missing data item(s)" });
         }
 
-        this.verify.email = this.decryptIV(req.body.email);
+        this.verify.email = this.decrypt(req.body.email);
         this.verify.token = req.body.token;
-        this.verify.username = this.decryptIV(req.body.username);
-        this.verify.userId = this.decryptIV(req.body.userId);
+        this.verify.username = this.decrypt(req.body.username);
+        this.verify.userId = this.decrypt(req.body.userId);
 
         this.Email.send({
             template: 'register',

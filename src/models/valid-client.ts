@@ -1,7 +1,12 @@
-import {Schema, model, Document, Model } from 'mongoose';
-import * as validator from 'mongoose-unique-validator';
-import * as jwt from 'jsonwebtoken';
 import * as config from '../config/config.json';
+import * as jwt from 'jsonwebtoken';
+import * as validator from 'mongoose-unique-validator';
+import {
+    Document,
+    model,
+    Model,
+    Schema
+    } from 'mongoose';
 
 declare interface IValidClient extends Document {
     id: string;

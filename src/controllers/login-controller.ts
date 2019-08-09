@@ -1,8 +1,8 @@
-import { BaseController } from './base-controller';
-import { Request, Response } from "express";
 import Result from '../models/result';
+import { BaseController } from './base-controller';
 import { IResetRequest } from '../models/interfaces';
 import { MAILER } from '../db/db-enums';
+import { Request, Response } from 'express';
 
 export class LoginController extends BaseController {
     constructor() {
@@ -21,10 +21,10 @@ export class LoginController extends BaseController {
         }
 
         const _resetRequest: IResetRequest = {
-            username: this.decryptIV(req.body.username),
-            email: this.decryptIV(req.body.email),
-            firstname: this.decryptIV(req.body.firstname),
-            lastname: this.decryptIV(req.body.lastname),
+            username: this.decrypt(req.body.username),
+            email: this.decrypt(req.body.email),
+            firstname: this.decrypt(req.body.firstname),
+            lastname: this.decrypt(req.body.lastname),
             token: req.body.token,
         }
 

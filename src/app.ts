@@ -1,10 +1,10 @@
-import * as express from 'express';
-import * as cors from 'cors';
-import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
-import * as helmet from 'helmet';
-import MailerRouter from './routes';
 import * as config from './config/config.json';
+import * as cors from 'cors';
+import * as express from 'express';
+import * as helmet from 'helmet';
+import * as logger from 'morgan';
+import MailerRouter from './routes';
 import { ValidateRequest } from './middleware/validate-request';
 
 export class App {

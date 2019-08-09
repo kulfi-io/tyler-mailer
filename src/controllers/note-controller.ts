@@ -1,7 +1,7 @@
-import { BaseController } from './base-controller';
-import { Request, Response } from "express";
-import Result from '../models/result';
 import Note from '../models/note';
+import Result from '../models/result';
+import { BaseController } from './base-controller';
+import { Request, Response } from 'express';
 
 export class NoteController extends BaseController {
     private note: Note 
@@ -20,10 +20,10 @@ export class NoteController extends BaseController {
             return res.status(400).send({ message: "missing data item(s)" });
         }
 
-        this.note.email = this.decryptIV(req.body.email);
-        this.note.firstname = this.decryptIV(req.body.firstname);
-        this.note.lastname = this.decryptIV(req.body.lastname);
-        this.note.content  = this.decryptIV(req.body.content);
+        this.note.email = this.decrypt(req.body.email);
+        this.note.firstname = this.decrypt(req.body.firstname);
+        this.note.lastname = this.decrypt(req.body.lastname);
+        this.note.content  = this.decrypt(req.body.content);
         
         this.Email.send({
             template: 'note',

@@ -1,8 +1,13 @@
-import { connect, connection, Connection, ConnectionOptions } from 'mongoose';
-import {Verify, VerifyModel} from '../models/verification';
 import ConnOptions from '../db/conn-options';
+import { CONN } from '../db/db-enums';
+import {
+    connect,
+    connection,
+    Connection,
+    ConnectionOptions
+    } from 'mongoose';
 import { mailer } from '../config/config.json';
-import {CONN} from '../db/db-enums';
+import { Verify, VerifyModel } from '../models/verification';
 
 declare interface IModels {
     Verify: VerifyModel

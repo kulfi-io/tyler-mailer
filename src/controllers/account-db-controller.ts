@@ -1,8 +1,13 @@
-import { connect, connection, Connection, ConnectionOptions } from 'mongoose';
-import { ValidClient, ValidClientModel } from '../models/valid-client';
 import ConnOptions from '../db/conn-options';
 import { account } from '../config/config.json';
 import { CONN } from '../db/db-enums';
+import {
+    connect,
+    connection,
+    Connection,
+    ConnectionOptions
+    } from 'mongoose';
+import { ValidClient, ValidClientModel } from '../models/valid-client';
 
 declare interface IModels {
     ValidClient: ValidClientModel,
