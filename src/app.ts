@@ -42,7 +42,7 @@ export class App {
 
   public run() {
     this.server.listen(config.port, config.host, () => {
-      console.log(`listening to ${config.name} on port: ${config.port}`);
+      console.log(`${config.name} listening on: ${config.host}:${config.port}`);
       console.log(`ENV: ${process.env.NODE_ENV}`);
     });
   }
