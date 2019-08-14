@@ -1,10 +1,11 @@
 import {Request, Response} from 'express';
+import * as config from '../config/config.json'
 
 export class BaseRoute {
     protected title: string;
 
     constructor() {
-        this.title = "Welcome Mailer API";
+        this.title = `Welcome to ${config.name}`;
     }
 
     public responseData(req: Request, res: Response, data?: Object) {

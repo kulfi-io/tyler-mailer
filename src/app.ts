@@ -12,11 +12,11 @@ export class App {
   
   constructor() {
 
-    process.title = "tyler-mailer";
+    process.title = config.name;
     this.server = express();
     this.configureMiddleware();
     this.routes();
-    this.run(config.port, config.host);
+    this.run();
   }
 
   private configureMiddleware() {
@@ -40,9 +40,9 @@ export class App {
     
   }
 
-  public run(port: number, host: string) {
-    this.server.listen(port, host, () => {
-      console.log(`listening on port: ${port}`);
+  public run() {
+    this.server.listen(config.port, config.host, () => {
+      console.log(`listening to ${config.name} on port: ${config.port}`);
       console.log(`ENV: ${process.env.NODE_ENV}`);
     });
   }

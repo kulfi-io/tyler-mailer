@@ -62,22 +62,13 @@ export class BaseController {
         });
     }
 
-    protected encrypt = (data: string) : string => {
+    protected encrypt = (data: string): string => {
 
         const cipher = crypto.createCipher(this.algorithm, config.secret);
 
         let encrypted = '';
-        cipher.on('readable', () => {
-        const data = cipher.read();
-        if (data)
-            encrypted += data.toString('hex');
-        });
-        cipher.on('end', () => {
-            console.log(encrypted);
-        });
-
-        cipher.write(data);
-        cipher.end();
+        encrypted = cipher.update(data, 'utf8', 'hex');
+        encrypted += cipher.final('hex');
 
         return this.isProd ? encrypted : data;
     }
@@ -85,19 +76,9 @@ export class BaseController {
     protected decrypt = (data: string): string => {
         const decipher = crypto.createDecipher(this.algorithm, config.secret);
 
-        let decrypted = '';
-        decipher.on('readable', () => {
-        const data = decipher.read();
-        if (data)
-            decrypted += data.toString('utf8');
-        });
-        decipher.on('end', () => {
-            console.log(decrypted);
-            // Prints: some clear text data
-        });
-
-        decipher.write(data, 'hex');
-        decipher.end();
+        let decrypted;
+        decrypted = decipher.update(data, 'hex', 'utf8');
+        decrypted += decipher.final('utf-8');
 
         return this.isProd ? decrypted : data;
     }
