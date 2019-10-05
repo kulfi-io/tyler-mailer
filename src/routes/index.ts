@@ -11,6 +11,7 @@ export class MailerRouter extends BaseRoute {
     }
 
     public map(router: Router) {
+        router.get('/', this.responseData);
         router.post('/v1/register', user.registerAccount);
         router.post('/v1/note',  note.sendNote);
         router.post('/v1/reset-request', login.resetRequest)
@@ -18,3 +19,4 @@ export class MailerRouter extends BaseRoute {
 }
 
 export default new MailerRouter();
+
