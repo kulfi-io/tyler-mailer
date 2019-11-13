@@ -4,6 +4,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+    context: path.resolve(__dirname, '../'),
     entry: './src/app.ts',
     node: {
         fs: 'empty',
@@ -26,10 +27,31 @@ module.exports = {
         new CleanWebpackPlugin(),
         new copyWebpackPlugin([
             {
-                from: path.resolve('./public/sass/*'),
-                to: path.resolve(__dirname, 'dist/sass/[name].[ext]'),
+                from: path.resolve('./public/css/*'),
+                to: path.resolve(__dirname, '../app/css/[name].[ext]'),
                 ignore: ['.*']
             },
+            {
+                from: path.resolve('./emails/note/*'),
+                to: path.resolve(__dirname, '../app/emails/note/[name].[ext]'),
+                ignore: ['.*']
+            },
+            {
+                from: path.resolve('./emails/password-reset/*'),
+                to: path.resolve(__dirname, '../app/emails/password-reset/[name].[ext]'),
+                ignore: ['.*']
+            },
+            {
+                from: path.resolve('./emails/register/*'),
+                to: path.resolve(__dirname, '../app/emails/register/[name].[ext]'),
+                ignore: ['.*']
+            },
+            {
+                from: path.resolve('./emails/shared/*'),
+                to: path.resolve(__dirname, '../app/emails/shared/[name].[ext]'),
+                ignore: ['.*']
+            }
+
             
         ])
     ]

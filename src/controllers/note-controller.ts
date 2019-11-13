@@ -10,6 +10,26 @@ export class NoteController extends BaseController {
         this.note = new Note();
     }
 
+    encryptTest = (req: Request, res: Response) => {
+        if( !req.body.test) {
+            return res.status(400).send({ message: "missing data item(s)" });
+        }
+
+        const _result = this.encryptIv(req.body.test);
+        return res.status(200).send({message: _result});
+
+    }
+
+    decryptTest = (req: Request, res: Response) => {
+        if( !req.body.test) {
+            return res.status(400).send({ message: "missing data item(s)" });
+        }
+
+        const _result = this.decryptIv(req.body.test);
+        return res.status(200).send({message: _result});
+
+    }
+
     sendNote = (req: Request, res: Response) => {
         if (
             !req.body.email ||
@@ -20,11 +40,13 @@ export class NoteController extends BaseController {
             return res.status(400).send({ message: "missing data item(s)" });
         }
 
-        this.note.email = this.decrypt(req.body.email);
-        this.note.firstname = this.decrypt(req.body.firstname);
-        this.note.lastname = this.decrypt(req.body.lastname);
-        this.note.content  = this.decrypt(req.body.content);
+
+        this.note.email = this.decryptIv(req.body.email);
+        this.note.firstname = this.decryptIv(req.body.firstname);
+        this.note.lastname = this.decryptIv(req.body.lastname);
+        this.note.content  = this.decryptIv(req.body.content);
         
+
         this.Email.send({
             template: 'note',
             message: {
@@ -45,7 +67,7 @@ export class NoteController extends BaseController {
             res.status(200).send({ message: `Note sent` });
         })
         .catch((err: Error) => {
-            res.status(400).send({ message: err.message });
+            res.status(400).send({ message: err });
         });
 
     }

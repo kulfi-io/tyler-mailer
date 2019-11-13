@@ -2,6 +2,7 @@ import Result from '../models/result';
 import Verify from '../models/verify';
 import { BaseController } from './base-controller';
 import { Request, Response } from 'express';
+import * as appConfig from '../config/config.json';
 
 export class UserController extends BaseController {
     private verify: Verify = {}
@@ -19,11 +20,14 @@ export class UserController extends BaseController {
             return res.status(400).send({ message: "missing data item(s)" });
         }
 
-        this.verify.email = this.decrypt(req.body.email);
-        this.verify.token = req.body.token;
-        this.verify.username = this.decrypt(req.body.username);
-        this.verify.userId = this.decrypt(req.body.userId);
 
+        this.verify.email = this.decryptIv(req.body.email);
+        this.verify.token = req.body.token;
+        this.verify.username = this.decryptIv(req.body.username);
+        this.verify.userId = req.body.userId;
+
+
+        
         this.Email.send({
             template: 'register',
             message: {
@@ -34,7 +38,8 @@ export class UserController extends BaseController {
             locals: {
                 name: this.verify.username,
                 token: this.verify.token,
-                email: this.verify.email
+                email: this.verify.email,
+                host: appConfig.homeHost,
             }
         })
         .then((result: Result) => {
@@ -43,7 +48,7 @@ export class UserController extends BaseController {
             res.status(200).send({ message: 'sent' });
         })
         .catch((err: Error) => {
-            res.status(400).send({ message: err.message });
+            res.status(400).send({ message: err.message});
         });
     }
 }

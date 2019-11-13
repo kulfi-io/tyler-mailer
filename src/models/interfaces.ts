@@ -8,6 +8,11 @@ export interface IDecoded {
     iat: number;
 }
 
+export interface IcryptoData {
+    iv: string,
+    encryptedData: string
+}
+
 export interface IMail {
     service: string; 
     sender: string; 

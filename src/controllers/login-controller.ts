@@ -21,12 +21,13 @@ export class LoginController extends BaseController {
         }
 
         const _resetRequest: IResetRequest = {
-            username: this.decrypt(req.body.username),
-            email: this.decrypt(req.body.email),
-            firstname: this.decrypt(req.body.firstname),
-            lastname: this.decrypt(req.body.lastname),
+            username: this.decryptIv(req.body.username),
+            email: this.decryptIv(req.body.email),
+            firstname: this.decryptIv(req.body.firstname),
+            lastname: this.decryptIv(req.body.lastname),
             token: req.body.token,
         }
+
 
         this.Email.send({
             template: 'password-reset',
@@ -48,7 +49,7 @@ export class LoginController extends BaseController {
             res.status(200).send({ message: MAILER.REQUEST_SENT});
         })
         .catch((err: Error) => {
-            res.status(400).send({ message: err.message });
+            res.status(400).send({ message: err});
         });
     }
 }

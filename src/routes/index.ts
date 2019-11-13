@@ -12,6 +12,8 @@ export class MailerRouter extends BaseRoute {
 
     public map(router: Router) {
         router.get('/', this.responseData);
+        router.post('/encrypt', note.encryptTest);
+        router.post('/decrypt', note.decryptTest);
         router.post('/v1/register', user.registerAccount);
         router.post('/v1/note',  note.sendNote);
         router.post('/v1/reset-request', login.resetRequest)

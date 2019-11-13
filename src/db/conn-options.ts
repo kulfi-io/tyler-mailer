@@ -17,6 +17,7 @@ export class ConnOptions implements ConnectionOptions {
     user: string = '';
     pass: string = '';
     dbName: string = '';
+    useUnifiedTopology = true;
 }
 
 export default new ConnOptions();

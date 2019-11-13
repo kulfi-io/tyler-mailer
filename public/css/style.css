@@ -1,7 +1,5 @@
 html, body {
     background: white;
-    // min-height: 100vh;
-    // min-width: 100vw;
     margin: auto;
     display: block;
     font-family: Montserrat, sans-serif;
@@ -17,8 +15,6 @@ html, body {
     color: #a9a9a9;
     margin: auto;
     display: block;
-    // width: 100vw;
-    // height: 100vh;
     padding: 2;
 
 }
@@ -86,10 +82,12 @@ html, body {
 }
 
 .footer {
-    //width: 100vw;
     margin: auto;
     display: block;
     line-height: 1.5;
+    position: fixed;
+    left: 0;
+    bottom: 0;
 }
 
 .footer .foot-container {
