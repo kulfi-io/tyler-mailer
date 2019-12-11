@@ -52,7 +52,7 @@ export class BaseController {
             preview: this.mail.preview,
             transport: this.transporter,
             send: this.mail.send,
-            views: {root},           
+            views: { root },
         });
 
     }
@@ -69,7 +69,7 @@ export class BaseController {
         );
 
         MailerDB.Models.Verify.create(_model, (err: Error, data: Verify) => {
-            if (err) console.error({message: err.message});
+            if (err) console.error({ message: err.message });
         });
     }
 
@@ -85,17 +85,17 @@ export class BaseController {
     }
 
     protected encryptIv = (data: string): IcryptoData | string => {
-        if(this.isProd) {
+        if (this.isProd) {
             this.iv = crypto.randomBytes(16);
 
             let cipher = crypto.createCipheriv(this.algorithmIv.toString(), this.key, this.iv);
             let encrypted = cipher.update(data, 'utf8', 'hex');
             encrypted += cipher.final('hex');
             return {
-                iv: this.iv.toString('hex'), 
+                iv: this.iv.toString('hex'),
                 encryptedData: encrypted
             };
-    
+
         }
 
         return data;
@@ -105,33 +105,33 @@ export class BaseController {
         const decipher = crypto.createDecipher(this.algorithm, config.secret);
 
         let decrypted;
-        if(this.isProd) {
+        if (this.isProd) {
             decrypted = decipher.update(data, 'hex', 'utf8');
             decrypted += decipher.final('utf-8');
 
-            return  decrypted; 
+            return decrypted;
         }
 
         return data;
-        
+
     }
 
     protected decryptIv = (data: string): string => {
-        if(this.isProd) {
+        if (this.isProd) {
 
             const _stringifiedData = JSON.stringify(data);
             const _data: IcryptoData = <IcryptoData>JSON.parse(_stringifiedData);
             let iv = Buffer.from(_data.iv, 'hex');
-            
+
 
             let decipher = crypto.createDecipheriv(this.algorithmIv, this.key, iv);
 
             let decrypted = decipher.update(_data.encryptedData, 'hex', 'utf8');
-            decrypted += decipher.final('utf8'); 
+            decrypted += decipher.final('utf8');
 
             return decrypted;
-    
-        } 
+
+        }
 
         return data;
     }

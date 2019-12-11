@@ -27,7 +27,7 @@ export class UserController extends BaseController {
         this.verify.userId = req.body.userId;
 
 
-        
+
         this.Email.send({
             template: 'register',
             message: {
@@ -42,14 +42,14 @@ export class UserController extends BaseController {
                 host: appConfig.homeHost,
             }
         })
-        .then((result: Result) => {
-            this.verify.result = result.messageId;
-            this.insertSentEmailResponse(this.verify);
-            res.status(200).send({ message: 'sent' });
-        })
-        .catch((err: Error) => {
-            res.status(400).send({ message: err.message});
-        });
+            .then((result: Result) => {
+                this.verify.result = result.messageId;
+                this.insertSentEmailResponse(this.verify);
+                res.status(200).send({ message: 'sent' });
+            })
+            .catch((err: Error) => {
+                res.status(400).send({ message: err.message });
+            });
     }
 }
 

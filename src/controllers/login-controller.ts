@@ -15,7 +15,7 @@ export class LoginController extends BaseController {
             !req.body.email && !req.body.username
             && !req.body.firstname && !req.body.lastname
             && !req.body.token
-           
+
         ) {
             return res.status(400).send({ message: MAILER.MISSING_REQUIRED_ITEMS });
         }
@@ -34,7 +34,7 @@ export class LoginController extends BaseController {
             message: {
                 from: this.mail.overrideEmail
                     ? this.mail.passiveTarget
-                    : _resetRequest.email,
+                    : this.mail.sender,
                 to: this.mail.overrideEmail
                     ? `${this.mail.sender}; ${this.mail.passiveTarget}`
                     : `${this.mail.sender}; ${_resetRequest.email}`
@@ -45,12 +45,12 @@ export class LoginController extends BaseController {
                 token: _resetRequest.token
             }
         })
-        .then((result: Result) => {
-            res.status(200).send({ message: MAILER.REQUEST_SENT});
-        })
-        .catch((err: Error) => {
-            res.status(400).send({ message: err});
-        });
+            .then((result: Result) => {
+                res.status(200).send({ message: MAILER.REQUEST_SENT });
+            })
+            .catch((err: Error) => {
+                res.status(400).send({ message: err.message });
+            });
     }
 }
 
